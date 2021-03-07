@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.10)
 
 
+# clang: error: unsupported option '-fsanitize=memory' for target 'x86_64-apple-darwin20.3.0'
+# clang: error: unsupported option '-fsanitize=leak' for target 'x86_64-apple-darwin20.3.0'
+
 # TODO libX, libYをサブフォルダに分割したほうが読みやすくなる (オプションの書き換えが面倒になるが)
 
 #
