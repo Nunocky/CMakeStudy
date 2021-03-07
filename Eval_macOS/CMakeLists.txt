@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.10)
 
+
+# TODO libX, libYをサブフォルダに分割したほうが読みやすくなる (オプションの書き換えが面倒になるが)
+
 #
 # libX (Shared Library)
 #
@@ -22,12 +25,21 @@ target_include_directories(X
   PRIVATE
   ../include)
 
+target_compile_options(X
+  PUBLIC
+  $<$<CONFIG:SanitizeCheck>:-g>
+  )
+
+target_link_options(X
+  PUBLIC
+  $<$<CONFIG:SanitizeCheck>:-fsanitize=address -fno-omit-frame-pointer>
+  )
+
 # MEMO : このようにして cmake中で使える変数を定義できる
 set_target_properties(X
   PROPERTIES
   VERSION ${PROJECT_VERSION}
   )
-
 
 
 #
@@ -51,10 +63,16 @@ target_include_directories(Y
   PRIVATE
   ../include)
 
-set_target_properties(Y
-  PROPERTIES
-  VERSION ${PROJECT_VERSION}
+target_compile_options(Y
+  PUBLIC
+  $<$<CONFIG:SanitizeCheck>:-g>
   )
+
+target_link_options(Y
+  PUBLIC
+  $<$<CONFIG:SanitizeCheck>:-fsanitize=address -fno-omit-frame-pointer>
+  )
+
 
 #
 # app
@@ -67,5 +85,20 @@ add_executable(app main.cc)
 target_include_directories(app
   PRIVATE
   ../include)
+
+target_compile_features(app
+  PRIVATE
+  cxx_std_11)
+
+target_compile_options(app
+  PUBLIC
+  $<$<CONFIG:SanitizeCheck>:-g>
+  )
+
+target_link_options(app
+  PUBLIC
+  $<$<CONFIG:SanitizeCheck>:-fsanitize=address -fno-omit-frame-pointer>
+  )
+
 
 target_link_libraries(app X Y)
