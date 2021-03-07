@@ -30,6 +30,7 @@ android {
         cmake {
             version "3.17.0+"
             path file('src/main/CMakeLists.txt')
+//            arguments "-DANDROID_ARM_MODE=arm", "-DANDROID_STL=c++_shared"
         }
     }
 }

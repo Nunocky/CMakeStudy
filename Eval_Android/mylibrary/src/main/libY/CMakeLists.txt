@@ -13,9 +13,9 @@ add_library(Y
         SHARED
         ../../../../../src/Y/libY.cc)
 
-target_compile_features(Y
-        PRIVATE
-        cxx_std_11)
+#target_compile_features(Y
+#        PRIVATE
+#        cxx_std_11)
 
 target_include_directories(Y
         PRIVATE
@@ -31,3 +31,11 @@ target_link_options(Y
         $<$<CONFIG:SanitizeCheck>:-fsanitize=address -fno-omit-frame-pointer>
         )
 
+#target_compile_options(Y
+#        PUBLIC
+#        -fsanitize=address -fno-omit-frame-pointer
+#        )
+#
+#set_target_properties(Y
+#        PROPERTIES
+#        LINK_FLAGS -fsanitize=address)
