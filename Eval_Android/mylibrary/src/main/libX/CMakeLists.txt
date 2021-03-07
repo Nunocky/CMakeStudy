@@ -27,10 +27,10 @@ target_compile_options(X
         $<$<CONFIG:SanitizeCheck>:-g>
         )
 
-#target_link_options(X
-#  PUBLIC
-#  $<$<CONFIG:SanitizeCheck>:-fsanitize=address -fno-omit-frame-pointer>
-#  )
+target_link_options(X
+        PUBLIC
+        $<$<CONFIG:SanitizeCheck>:-fsanitize=address -fno-omit-frame-pointer>
+        )
 
 # MEMO : このようにして cmake中で使える変数を定義できる
 set_target_properties(X

@@ -21,13 +21,13 @@ target_include_directories(Y
         PRIVATE
         ../../../../../include)
 
-#target_compile_options(Y
-#  PUBLIC
-#  $<$<CONFIG:SanitizeCheck>:-g>
-#  )
+target_compile_options(Y
+        PUBLIC
+        $<$<CONFIG:SanitizeCheck>:-g>
+        )
 
-#target_link_options(Y
-#        PUBLIC
-#        $<$<CONFIG:SanitizeCheck>:-fsanitize=address -fno-omit-frame-pointer>
-#        )
+target_link_options(Y
+        PUBLIC
+        $<$<CONFIG:SanitizeCheck>:-fsanitize=address -fno-omit-frame-pointer>
+        )
 

@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 
+project(native-lib)
+
 find_library(log-lib
         log)
 
@@ -9,8 +11,8 @@ add_library(
         SHARED
         cpp/native-lib.cpp
 
-#        src/main/cpp/native-lib.cpp
-        )
+        #        src/main/cpp/native-lib.cpp
+)
 
 target_include_directories(native-lib
         PRIVATE
