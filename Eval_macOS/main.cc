@@ -4,11 +4,11 @@
 #include <string>
 
 #include <X/libX.h>
+#include <Y/libY.h>
 
 int main(int argc, char* argv[])
 {
-  std::string message = X::greeting();
-
-  printf("%s\n", message.c_str());
+  printf("%s\n", X::greeting().c_str());
+  printf("%s\n", Y::greeting().c_str());
   return 0;
 }
